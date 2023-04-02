@@ -4,6 +4,7 @@ import { getBlogListAction } from "../../services/action/blogs";
 import { Icon } from "../Icon";
 import "./Homepage.css";
 import { blogIntro } from "../constants";
+import HomeHeader from "./Header";
 
 const HomePage = () => {
   const dispatch = useDispatch();
@@ -17,6 +18,7 @@ const HomePage = () => {
   }, [blogList]);
   return (
     <div className="wrapper">
+      <HomeHeader />
       <div className="about-banner">
         <div className="about-banner-wrap">
           <div className="row">
@@ -45,6 +47,9 @@ const HomePage = () => {
           </div>
         </div>
       </div>
+      <br />
+      <br />
+      <br />
     </div>
   );
 };

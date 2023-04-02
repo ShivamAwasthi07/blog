@@ -137,3 +137,150 @@
     padding-bottom: 40px;
   }
 }
+
+.site-header {
+  display: block;
+  position: sticky;
+  top: 0;
+  border-bottom: 1px solid #dcdcdc;
+  width: 100%;
+  background-color: white;
+  z-index: 1;
+}
+.site-header .container {
+  display: flex;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1280px;
+  padding: 10px;
+  align-items: center;
+  justify-content: space-between;
+}
+.site-header .container .logo {
+  flex: 0 0 150px;
+  max-width: 150px;
+}
+.site-header .container .nav {
+  flex: 0 0 auto;
+  display: flex;
+  justify-content: flex-end;
+}
+.site-header .container .nav ul {
+  display: flex;
+}
+.site-header .container .nav ul li {
+  padding: 10px;
+  display: inline-flex;
+  align-items: center;
+}
+.site-header .btn.btn-gray {
+  background-color: #6e6e6e;
+}
+.site-header .link {
+  display: flex;
+  align-items: center;
+  color: #6e6e6e;
+}
+.site-header .link img {
+  margin-left: 5px;
+}
+.hamburger,
+.close-sidebar {
+  display: none;
+}
+.hamburger {
+  height: 24px;
+  width: 36px;
+  margin: 0;
+  position: absolute;
+  top: 18px;
+  left: 15px;
+  display: none;
+  vertical-align: middle;
+  z-index: 1;
+}
+
+.hamburger span {
+  display: block;
+  background: #6e6e6e;
+  width: 100%;
+  height: 4px;
+  margin-top: -2px;
+  position: absolute;
+  left: 0;
+  top: 50%;
+}
+
+.hamburger:before,
+.hamburger:after {
+  content: "";
+  display: block;
+  background: #6e6e6e;
+  width: 100%;
+  height: 4px;
+  position: absolute;
+  left: 0;
+  transform-origin: center center;
+  transform: rotate(0deg);
+  transition: all 0.3s ease;
+}
+
+.hamburger:before {
+  top: 2px;
+  margin-top: -2px;
+}
+
+.hamburger:after {
+  bottom: 2px;
+  margin-bottom: -2px;
+}
+@media (max-width: 768px) {
+  .hamburger {
+    display: inline-block;
+  }
+  .close-sidebar {
+    display: block;
+    position: absolute;
+    z-index: 10;
+    right: 10px;
+    top: 10px;
+  }
+  .close-sidebar svg path {
+    fill: #fff;
+  }
+  .site-header .container .nav {
+    position: fixed;
+    left: -100%;
+    top: 0px;
+    height: 100%;
+    z-index: 9;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    transition: left 0.3s ease-in-out;
+  }
+  .site-header .container .nav.open {
+    left: 0;
+    transition: left 0.3s ease-in-out;
+    padding-top: 0;
+  }
+  .site-header .container {
+    padding-left: 60px;
+  }
+  .site-header .container .nav ul {
+    max-width: calc(100% - 80px);
+    background-color: #fff;
+    flex-direction: column;
+    width: 300px;
+    padding-top: 10px;
+  }
+  .site-header .container .nav .btn {
+    width: 100%;
+  }
+  .site-header .container .logo {
+    flex: 0 0 100px;
+    max-width: 100px;
+    display: flex;
+  }
+}
