@@ -6,6 +6,7 @@ import {
   getBlogListApi,
   getOneBlogApi,
   postBlogApi,
+  updateBlogApi,
 } from "../../api";
 
 export function* getBLogListSaga() {
@@ -46,7 +47,7 @@ export function* getOneBlogSaga({ data }) {
   }
 }
 
-export function* deleteBlogSaga({ blogId }) {
+export function* deleteBlogSaga({ blogId, navigate }) {
   try {
     yield put({ type: types.DELETE_BLOG_START });
     const response = yield call(deleteBlogApi, blogId);
@@ -54,19 +55,47 @@ export function* deleteBlogSaga({ blogId }) {
       yield put({ type: types.DELETE_BLOG_FAIL });
       toastMessage.error(response.data.message);
     } else {
+      toastMessage.success(response.data.message);
       const resJobLists = yield call(getBlogListApi);
       yield put({
         type: types.GET_BLOG_LIST_SUCCESS,
         data: resJobLists.data,
       });
       yield put({ type: types.DELETE_BLOG_SUCCESS, data: response.data });
+      navigate("/blog");
     }
   } catch (error) {
     yield put({ type: types.DELETE_BLOG_FAIL });
   }
 }
 
-export function* updateBlogSaga() {}
+export function* updateBlogSaga({ blogId, data, navigate }) {
+  try {
+    yield put({ type: types.UPDATE_BLOG_START });
+    const response = yield call(updateBlogApi, blogId, data);
+    if (response.data.statusMessage === "FAIL") {
+      yield put({ type: types.UPDATE_BLOG_FAIL }); //current
+      toastMessage.error(response.data.message);
+      navigate("/login");
+    } else {
+      if (response?.data?.statusMessage === "SUCCESS") {
+        const resp = yield call(getBlogListApi);
+        yield put({
+          type: types.UPDATE_BLOG_SUCCESS,
+          data,
+        });
+        yield put({
+          type: types.GET_BLOG_LIST,
+          data: resp.data,
+        });
+        navigate(-1);
+      }
+      toastMessage.success(response?.data?.message);
+    }
+  } catch (error) {
+    yield put({ type: types.UPDATE_BLOG_FAIL });
+  }
+}
 
 export function* postBlogSaga({ data, reset, setEditor }) {
   try {

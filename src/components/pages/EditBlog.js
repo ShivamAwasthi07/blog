@@ -1,17 +1,21 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import "./FormCss.css";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { modules, formats } from "../constants/modules";
-import { postBlogListAction } from "../../services/action/blogs";
+import {
+  postBlogListAction,
+  updateBlogAction,
+} from "../../services/action/blogs";
 import { ClipLoader } from "react-spinners";
 
-const AddBlog = () => {
+const EditBlog = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { blogid } = useParams();
   const {
     register,
     setValue,
@@ -21,14 +25,25 @@ const AddBlog = () => {
     formState: { errors },
   } = useForm();
 
+  const { blogData, updateBlogLoading } = useSelector(
+    (state) => state.blogReducer
+  );
   const [blogEditor, setEditor] = useState("");
+  useEffect(() => {
+    console.log(blogData);
+    setValue("blogTitle", blogData?.data?.blogTitle);
+    setValue("postDate", blogData?.data?.postDate.split("T")?.[0]);
+    setValue("authorName", blogData?.data?.authorName);
+    setValue("coverImage", blogData?.data?.coverImage);
+    setValue("blogDesc", blogData?.data?.blogDesc);
+    // setValue("blogDesc", blogData?.data?.blogDesc);
+    setEditor(blogData?.data?.blogText);
+  }, []);
   const onSubmit = (data) => {
     dispatch(
-      postBlogListAction({ ...data, blogText: blogEditor }, reset(), setEditor)
+      updateBlogAction(blogid, { ...data, blogText: blogEditor }, navigate)
     );
   };
-
-  const { postLoading } = useSelector((state) => state.blogReducer);
 
   return (
     <Fragment>
@@ -87,6 +102,7 @@ const AddBlog = () => {
                             required: true,
                             // pattern: /^[0-9.,]+$/i,
                           })}
+                          //   value={getValues("postDate")}
                           type="date"
                           name="postDate"
                           className="form-control"
@@ -149,7 +165,7 @@ const AddBlog = () => {
                 </div>
                 <div className="btn-block justify-content-end">
                   <button className="btn" type="submit">
-                    {postLoading ? (
+                    {updateBlogLoading ? (
                       <ClipLoader color="white" size={20} />
                     ) : (
                       "Submit"
@@ -166,4 +182,4 @@ const AddBlog = () => {
   );
 };
 
-export default AddBlog;
+export default EditBlog;

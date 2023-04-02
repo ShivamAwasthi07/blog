@@ -15,7 +15,6 @@ const BlogPage = () => {
 
   useEffect(() => {
     dispatch(getBlogListAction());
-    // dispatch(getOneBlogAction(1));
   }, [dispatch]);
   return (
     <Fragment>
