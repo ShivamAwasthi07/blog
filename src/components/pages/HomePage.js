@@ -8,14 +8,11 @@ import HomeHeader from "./Header";
 
 const HomePage = () => {
   const dispatch = useDispatch();
-  const { blogList } = useSelector((state) => state.blogReducer);
 
   useEffect(() => {
     dispatch(getBlogListAction());
   }, [dispatch]);
-  useEffect(() => {
-    console.log(blogList);
-  }, [blogList]);
+
   return (
     <div className="wrapper">
       <HomeHeader />

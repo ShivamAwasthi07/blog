@@ -390,7 +390,9 @@
   flex-wrap: wrap;
   gap: 16px;
   margin-bottom: 10px;
-  padding: 20px 0;
+  padding: 15px 10px;
+  border: 1px solid #e2e2e2;
+  margin-top: 20px;
 }
 .blog-card {
   flex: 0 0 33.3333%;

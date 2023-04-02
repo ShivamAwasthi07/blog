@@ -6,6 +6,7 @@ import "./FormCss.css";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { modules, formats } from "../constants/modules";
+import { postBlogListAction } from "../../services/action/blogs";
 
 const AddBlog = () => {
   const dispatch = useDispatch();
@@ -21,7 +22,9 @@ const AddBlog = () => {
 
   const [blogEditor, setEditor] = useState("");
   const onSubmit = (data) => {
-    console.log({ ...data, blogText: blogEditor });
+    dispatch(
+      postBlogListAction({ ...data, blogText: blogEditor }, reset(), setEditor)
+    );
   };
 
   return (
@@ -88,6 +91,24 @@ const AddBlog = () => {
                         />
                       </div>
                     </div>
+                    <div className="col-12">
+                      <div className="form-group">
+                        <label
+                          className={errors.coverImage ? "text-danger" : ""}
+                        >
+                          Cover Image
+                        </label>
+                        <input
+                          {...register("coverImage", {
+                            required: true,
+                          })}
+                          type="text"
+                          name="coverImage"
+                          className="form-control"
+                          placeholder="Paste your cover image URL here!"
+                        />
+                      </div>
+                    </div>
                   </div>
 
                   <div className="row">
@@ -101,7 +122,7 @@ const AddBlog = () => {
                             required: true,
                           })}
                           name="blogDesc"
-                          rows={5}
+                          rows={3}
                         />
                       </div>
                     </div>
