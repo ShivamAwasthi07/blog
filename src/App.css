@@ -1,38 +1,240 @@
-.App {
-  text-align: center;
+:root {
+  --theme-color: #3ba0aa;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+html {
+  scroll-behavior: smooth;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+@font-face {
+  font-family: "Poppins-Light";
+  src: url("./assets/fonts/Poppins-Light.ttf") format("truetype");
+  font-weight: normal;
+  font-display: swap;
 }
 
-.App-header {
-  background-color: #282c34;
+@font-face {
+  font-family: "Poppins-Regular";
+  src: url("./assets/fonts/Poppins-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Poppins-Medium";
+  src: url("./assets/fonts/Poppins-Medium.ttf") format("truetype");
+  font-weight: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Poppins-SemiBold";
+  src: url("./assets/fonts/Poppins-SemiBold.ttf") format("truetype");
+  font-weight: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Poppins-Bold";
+  src: url("./assets/fonts/Poppins-Bold.ttf") format("truetype");
+  font-weight: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Poppins-ExtraBold";
+  src: url("./assets/fonts/Poppins-ExtraBold.ttf") format("truetype");
+  font-weight: normal;
+  font-display: swap;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Poppins-Regular", sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: rgba(44, 56, 74, 0.95);
+  background-color: #fff;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
   min-height: 100vh;
+}
+
+p {
+  margin: 0 0 1rem;
+}
+
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+img {
+  max-width: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Poppins-Medium", sans-serif;
+  color: #242c33;
+  font-weight: normal;
+}
+
+h1 {
+  font-size: 42px;
+}
+
+h2 {
+  font-size: 34px;
+}
+
+h3 {
+  font-size: 28px;
+}
+
+h4 {
+  font-size: 20px;
+}
+
+h5 {
+  font-size: 12px;
+}
+
+#root {
+  display: flex;
+  min-height: 100vh;
+  flex: 1;
+  width: 100%;
+}
+
+.App {
+  display: flex;
+  min-height: 100vh;
+  flex: 1 0 100%;
+  max-width: 100%;
+}
+
+.wrap {
+  display: flex;
+  width: 100%;
+}
+
+.main {
+  flex: 1;
+  margin-left: 250px;
+  overflow-x: auto;
+}
+
+.wrapper {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  width: 100%;
 }
 
-.App-link {
-  color: #61dafb;
+.container {
+  display: block;
+  max-width: 1280px;
+  padding: 0 15px;
+  margin: 0 auto;
+  width: 100%;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+.col {
+  flex: 1 0 0%;
+  width: 100%;
+  max-width: 100%;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.col-1,
+.col-2,
+.col-3,
+.col-4,
+.col-5,
+.col-6,
+.col-7,
+.col-8,
+.col-9,
+.col-10,
+.col-11,
+.col-12 {
+  flex: 0 0 auto;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.col-1 {
+  width: 8.33333333%;
+}
+
+.col-2 {
+  width: 16.66666667%;
+}
+
+.col-3 {
+  width: 25%;
+}
+
+.col-4 {
+  width: 33.33333333%;
+}
+
+.col-5 {
+  width: 41.66666667%;
+}
+
+.col-6 {
+  width: 50%;
+}
+
+.col-7 {
+  width: 58.33333333%;
+}
+
+.col-8 {
+  width: 66.66666667%;
+}
+
+.col-9 {
+  width: 75%;
+}
+
+.col-10 {
+  width: 83.33333333%;
+}
+
+.col-11 {
+  width: 91.66666667%;
+}
+
+.col-12 {
+  width: 100%;
+}
+
+.form-group {
+  margin-bottom: 10px;
 }
