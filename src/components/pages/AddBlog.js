@@ -37,7 +37,7 @@ const AddBlog = () => {
         <div className="shortlisted-wrap dash-block">
           <div className="shortlisted-block card">
             <div className="job-rquirement">
-              <h4 className="job-rquirement-title">JOB REQUIREMENT</h4>
+              <h4 className="job-rquirement-title">BLOG DETAILS</h4>
               <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="job-rquirement-form">
                   <div className="row">
@@ -46,7 +46,7 @@ const AddBlog = () => {
                         <label
                           className={errors.blogTitle ? "text-danger" : ""}
                         >
-                          Job Title
+                          Blog Title
                         </label>
                         <input
                           {...register("blogTitle", {
@@ -99,7 +99,7 @@ const AddBlog = () => {
                         <label
                           className={errors.coverImage ? "text-danger" : ""}
                         >
-                          Cover Image
+                          Cover Image*
                         </label>
                         <input
                           {...register("coverImage", {

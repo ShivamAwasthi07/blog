@@ -24,9 +24,9 @@ const HomePage = () => {
             </div>
             <div className="col-6">
               <h1>{"DBMS PROJECT"}</h1>
-              <h2>
-                {"Blog App"} &amp; {"English Test"}
-              </h2>
+              <h2>{"Blog App"}</h2>
+              <br />
+              <h3>{"SHIVAM AWASTHI 2K21/CO/443"}</h3>
             </div>
           </div>
         </div>
