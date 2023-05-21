@@ -18,6 +18,7 @@ const BlogPage = () => {
   }, [dispatch]);
   return (
     <Fragment>
+      <title>All Blogs</title>
       <div className="wordpress-blog-container">
         <HomeHeader />
         <div className="container">

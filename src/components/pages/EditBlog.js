@@ -47,6 +47,7 @@ const EditBlog = () => {
 
   return (
     <Fragment>
+      <title>Edit Blogs</title>
       <div className="col-2"></div>
       <div className="col-8">
         <div className="shortlisted-wrap dash-block">

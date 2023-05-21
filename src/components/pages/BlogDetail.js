@@ -29,6 +29,9 @@ const BlogDetail = () => {
 
   return (
     <Fragment>
+      <title>
+        {blogData?.data?.blogTitle ? blogData?.data?.blogTitle : "Blog Details"}
+      </title>
       <div className="col-2"></div>
 
       <div className="col-8">

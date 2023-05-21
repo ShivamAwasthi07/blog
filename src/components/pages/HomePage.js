@@ -15,6 +15,7 @@ const HomePage = () => {
 
   return (
     <div className="wrapper">
+      <title>Blog Application</title>
       <HomeHeader />
       <div className="about-banner">
         <div className="about-banner-wrap">
